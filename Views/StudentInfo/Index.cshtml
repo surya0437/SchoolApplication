@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SchoolApplication.Models.Student>
+<div class="mb-3">
+
+<a class="btn btn-primary float-end" asp-action="AddAndEditStudent">Add New (with AddEdit controller)</a>
+<a class="btn btn-primary float-end mx-3" asp-action="AddStudent" >Add New (With Add controller)</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            @* <th>Name</th> *@
+            <th>Roll Number</th>
+            <th>Class Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.rollNumber</td>
+                <td>@item.className</td>
+                <td>@item.email</td>
+                <td>@item.phone</td>
+                <td><a class="btn btn-success" asp-action="AddAndEditStudent" asp-route-id="@item.Id">Edit (with AddEdit Controller)</a></td>
+                <td><a class="btn btn-success" asp-action="EditStudent" asp-route-id="@item.Id">Edit (only Edit controller)</a></td>
+                <td><a class="btn btn-danger" asp-action="RemoveStudent" asp-route-id="@item.Id">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
